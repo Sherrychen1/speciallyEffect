@@ -3,3 +3,7 @@
 # 这个是啥啊
 
 LawrenceDiao
+
+#项目思维导图
+
+![Image text](http://abc.sherryai.top/cjk.png)
