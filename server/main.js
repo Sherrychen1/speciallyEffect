@@ -14,6 +14,9 @@ router.get('/', async ctx => {
   ctx.body = { msg: 'hello koa interfaces,你好，宋' }
 })
 
+// 引入user.js
+const users = require('./routes/api/user')
+
 // 连接数据库  数据库为MySQL5.7.26
 var connection = mysql.createConnection({
   host: 'localhost',
@@ -25,15 +28,15 @@ var connection = mysql.createConnection({
 
 connection.connect()
 
-connection.query('SELECT  * from test', function (error, results, fields) {
-  if (error) {
-    console.log('错了The solution is: ', error)
-  } else {
-    console.log(results, fields)
-  }
-})
-// 配置路由
-
+// connection.query('SELECT  * from test', function (error, results, fields) {
+//   if (error) {
+//     console.log('错了The solution is: ', error)
+//   } else {
+//     console.log(results, fields)
+//   }
+// })
+// 配置路由地址
+router.use('/api/user', users)
 main.use(router.routes()).use(router.allowedMethods())
 
 const port = process.env.PORT || 5000
